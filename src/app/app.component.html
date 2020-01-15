@@ -1,74 +1,7 @@
 <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-        <!--
-          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-          Tip 2: you can also add an image using data-image tag
-      -->
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                Creative Tim
-            </a>
-        </div>
-        <div class="sidebar-wrapper">
-            <ul class="nav">
-                <li class="nav-item active  ">
-                    <a class="nav-link" href="./dashboard.html">
-                        <i class="material-icons">dashboard</i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./user.html">
-                        <i class="material-icons">person</i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./tables.html">
-                        <i class="material-icons">content_paste</i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./typography.html">
-                        <i class="material-icons">library_books</i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./icons.html">
-                        <i class="material-icons">bubble_chart</i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./map.html">
-                        <i class="material-icons">location_ons</i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./notifications.html">
-                        <i class="material-icons">notifications</i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./rtl.html">
-                        <i class="material-icons">language</i>
-                        <p>RTL Support</p>
-                    </a>
-                </li>
-                <li class="nav-item active-pro ">
-                    <a class="nav-link" href="./upgrade.html">
-                        <i class="material-icons">unarchive</i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <app-categories></app-categories>
+    
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
@@ -76,7 +9,8 @@
                 <div class="navbar-wrapper">
                     <a class="navbar-brand" href="#pablo">Dashboard</a>
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
@@ -102,7 +36,8 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">notifications</i>
                                 <span class="notification">5</span>
                                 <p class="d-lg-none d-md-block">
@@ -118,7 +53,8 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">person</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
@@ -216,7 +152,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">Daily Sales</h4>
                                 <p class="card-category">
-                                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase
+                                    in today sales.</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -297,7 +234,8 @@
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   checked>
                                                             <span class="form-check-sign">
                                     <span class="check"></span>
                                   </span>
@@ -306,10 +244,12 @@
                                                 </td>
                                                 <td>Sign contract for "What are conference organizers afraid of?"</td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -327,10 +267,12 @@
                                                 </td>
                                                 <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -346,13 +288,16 @@
                                                         </label>
                                                     </div>
                                                 </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                                <td>Flooded: One year later, assessing what was lost and what was found
+                                                    when a ravaging rain swept through metro Detroit
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -361,7 +306,8 @@
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   checked>
                                                             <span class="form-check-sign">
                                     <span class="check"></span>
                                   </span>
@@ -370,10 +316,12 @@
                                                 </td>
                                                 <td>Create 4 Invisible User Experiences you Never Knew About</td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -388,20 +336,24 @@
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   checked>
                                                             <span class="form-check-sign">
                                     <span class="check"></span>
                                   </span>
                                                         </label>
                                                     </div>
                                                 </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                                <td>Flooded: One year later, assessing what was lost and what was found
+                                                    when a ravaging rain swept through metro Detroit
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -419,10 +371,12 @@
                                                 </td>
                                                 <td>Sign contract for "What are conference organizers afraid of?"</td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -446,10 +400,12 @@
                                                 </td>
                                                 <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -458,20 +414,24 @@
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   checked>
                                                             <span class="form-check-sign">
                                     <span class="check"></span>
                                   </span>
                                                         </label>
                                                     </div>
                                                 </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                                <td>Flooded: One year later, assessing what was lost and what was found
+                                                    when a ravaging rain swept through metro Detroit
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -480,7 +440,8 @@
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   checked>
                                                             <span class="form-check-sign">
                                     <span class="check"></span>
                                   </span>
@@ -489,10 +450,12 @@
                                                 </td>
                                                 <td>Sign contract for "What are conference organizers afraid of?"</td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Remove"
+                                                            class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>
@@ -581,7 +544,8 @@
                     &copy;
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>, made with <i class="material-icons">favorite</i> by
+                    </script>
+                    , made with <i class="material-icons">favorite</i> by
                     <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
                 </div>
             </div>
@@ -630,7 +594,8 @@
                 </a>
             </li>
             <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+                <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank"
+                   class="btn btn-primary btn-block">Free Download</a>
             </li>
             <!-- <li class="header-title">Want more components?</li>
                 <li class="button-container">
@@ -639,17 +604,22 @@
                     </a>
                 </li> -->
             <li class="button-container">
-                <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+                <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html"
+                   target="_blank" class="btn btn-default btn-block">
                     View Documentation
                 </a>
             </li>
             <li class="button-container github-star">
-                <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard"
+                   data-icon="octicon-star" data-size="large" data-show-count="true"
+                   aria-label="Star ntkme/github-buttons on GitHub">Star</a>
             </li>
             <li class="header-title">Thank you for 95 shares!</li>
             <li class="button-container text-center">
-                <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-                <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+                <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45
+                </button>
+                <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50
+                </button>
                 <br>
                 <br>
             </li>
