@@ -4,7 +4,7 @@
     </div>
     <div class="card-body table-responsive">
 
-        <table [dataSource]="dataSource" mat-table>
+        <table [dataSource]="dataSource" mat-table matSort>
 
             <!--  цвет приоритета  -->
             <ng-container matColumnDef="color">
@@ -23,7 +23,7 @@
 
             <!-- название задачи-->
             <ng-container matColumnDef="title">
-                <th *matHeaderCellDef mat-header-cell>Название</th>
+                <th *matHeaderCellDef mat-header-cell mat-sort-header>Название</th>
                 <td *matCellDef="let task" [class.completed]="task.completed" class="col-title" mat-cell>
                     {{task.title}}
                 </td>
@@ -31,27 +31,27 @@
 
             <!--дата выполнения-->
             <ng-container matColumnDef="date">
-                <th *matHeaderCellDef mat-header-cell>Срок</th>
-                <td *matCellDef="let task" [ngClass]="{'completed': task.completed, 'nodate': task.date == null}"
+                <th *matHeaderCellDef mat-header-cell mat-sort-header>Срок</th>
+                <td *matCellDef="let task" [ngClass]="{'completed': task.completed}"
                     class="col-date" mat-cell>
-                    {{task.date | date: "medium"}}
+                    {{task.date ? (task.date | date: "medium") : "Без даты"}}
                 </td>
             </ng-container>
 
             <!--приоритет-->
             <ng-container matColumnDef="priority">
-                <th *matHeaderCellDef mat-header-cell>Приоритет</th>
+                <th *matHeaderCellDef mat-header-cell mat-sort-header>Приоритет</th>
                 <td *matCellDef="let task"
-                    [ngClass]="{'completed': task.completed, 'nopriority': task.priority == null}" class="col-priority" mat-cell>
+                    [ngClass]="{'completed': task.completed}" class="col-priority" mat-cell>
                     {{task.priority ? task.priority.title : "Без приоритета"}}
                 </td>
             </ng-container>
 
             <!--категория-->
             <ng-container matColumnDef="category">
-                <th *matHeaderCellDef mat-header-cell>Категория</th>
+                <th *matHeaderCellDef mat-header-cell mat-sort-header>Категория</th>
                 <td *matCellDef="let task"
-                    [ngClass]="{'completed': task.completed, 'nocategory': task.category == null, 'link': !task.completed && task.category}"
+                    [ngClass]="{'completed': task.completed}"
                     class="col-category" mat-cell>
                     {{task.category ? task.category.title : "Без категории"}}
                 </td>
@@ -63,6 +63,8 @@
             <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 
         </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
 
     </div>
 </div>
