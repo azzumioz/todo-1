@@ -1,3 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/css/material-dashboard.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.not-found {
+    margin-top: 30px;
+    font-size: 20px;
+    color: rgba(74, 74, 74, 0.98);
+    text-align: center;
+}

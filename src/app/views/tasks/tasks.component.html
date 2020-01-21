@@ -2,7 +2,7 @@
     <div class="card-header card-header-warning">
         <h4 class="card-title">Список задач</h4>
     </div>
-    <div class="card-body table-responsive">
+    <div class="card-body table-responsive" *ngIf="tasks.length > 0">
 
         <table [dataSource]="dataSource" mat-table matSort>
 
@@ -32,7 +32,7 @@
             <!--дата выполнения-->
             <ng-container matColumnDef="date">
                 <th *matHeaderCellDef mat-header-cell mat-sort-header>Срок</th>
-                <td *matCellDef="let task" [ngClass]="{'completed': task.completed}"
+                <td *matCellDef="let task" [ngClass]="{'completed': task.completed, 'novalue': task.date == null}"
                     class="col-date" mat-cell>
                     {{task.date ? (task.date | date: "medium") : "Без даты"}}
                 </td>
@@ -42,7 +42,7 @@
             <ng-container matColumnDef="priority">
                 <th *matHeaderCellDef mat-header-cell mat-sort-header>Приоритет</th>
                 <td *matCellDef="let task"
-                    [ngClass]="{'completed': task.completed}" class="col-priority" mat-cell>
+                    [ngClass]="{'completed': task.completed, 'novalue': task.priority == null}" class="col-priority" mat-cell>
                     {{task.priority ? task.priority.title : "Без приоритета"}}
                 </td>
             </ng-container>
@@ -51,7 +51,7 @@
             <ng-container matColumnDef="category">
                 <th *matHeaderCellDef mat-header-cell mat-sort-header>Категория</th>
                 <td *matCellDef="let task"
-                    [ngClass]="{'completed': task.completed}"
+                    [ngClass]="{'completed': task.completed, 'novalue': task.category == null}"
                     class="col-category" mat-cell>
                     {{task.category ? task.category.title : "Без категории"}}
                 </td>
@@ -67,4 +67,5 @@
         <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
 
     </div>
+    <div *ngIf="tasks.length == 0"><p class="not-found">Ничего не найдено</p></div>
 </div>
