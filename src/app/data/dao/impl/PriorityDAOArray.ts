@@ -16,8 +16,8 @@ export class PriorityDAOArray implements PriorityDAO {
         return undefined;
     }
 
-    getAll(): Observable<Priority>[] {
-        return [];
+    getAll(): Observable<Priority[]> {
+        return undefined;
     }
 
     update(T): Observable<Priority> {

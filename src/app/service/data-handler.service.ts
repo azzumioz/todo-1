@@ -1,32 +1,34 @@
 import {Injectable} from '@angular/core';
-import {Category} from "../model/Category";
-import {TestData} from "../data/TestData";
 import {Task} from "../model/Task";
-import {BehaviorSubject, Subject} from "rxjs";
+import {Observable} from "rxjs";
+import {TaskDAOArray} from "../data/dao/impl/TaskDAOArray";
+import {CategoryDAOArray} from "../data/dao/impl/CategoryDAOArray";
+import {Category} from "../model/Category";
+
+// класс реализовывает методы, которые нужны frontend'у, т.е. для удобной работы представлений
+// напоминает паттер Фасад (Facade) - выдает только то, что нужно для функционала
+// сервис не реализовывает напрямую интерфейсы DAO, а использует их реализации (в данном случае массивы)
+// может использовать не все методы DAO, а только нужные
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataHandlerService {
 
-    taskSubject = new BehaviorSubject<Task[]>(TestData.tasks);
-    categoriesSubject = new BehaviorSubject<Category[]>(TestData.categories);
+    // релизации работы с данными с помощью массива
+    // (можно подставлять любые релизации, в том числе с БД. Главное - соблюдать интерфейсы)
+    private taskDAOArray = new TaskDAOArray();
+    private categoryDAOArray = new CategoryDAOArray();
 
     constructor() {
     }
 
-    // getCategoies(): Category[] {
-    //     return TestData.categories;
-    // }
-
-    fillTasks() {
-        this.taskSubject.next(TestData.tasks);
+    getAllTasks(): Observable<Task[]> {
+        return this.taskDAOArray.getAll();
     }
 
-    fillTasksByCategory(category: Category) {
-        const tasks = TestData.tasks.filter(task => task.category === category);
-        this.taskSubject.next(tasks);
+    getAllCategories(): Observable<Category[]> {
+        return this.categoryDAOArray.getAll();
     }
-
 }
 
