@@ -14,12 +14,17 @@ export class TasksComponent implements OnInit {
     private displayedColumns: string[] = ['color', 'id', 'title', 'date', 'priority', 'category'];
     private dataSource: MatTableDataSource<Task>; // контейнер - источник данных для таблицы
 
+    private tasks: Task[];
+
     // ссылки на компоненты таблицы
     @ViewChild(MatPaginator, {static: false}) private paginator: MatPaginator;
     @ViewChild(MatSort, {static: false}) private sort: MatSort;
 
-    @Input()
-    private tasks: Task[];
+    @Input('tasks')
+    private set setTasks(tasks: Task[]) {
+        this.tasks = tasks;
+        this.fillTable();
+    }
 
     constructor(private dataHandler: DataHandlerService) {
     }
@@ -55,6 +60,11 @@ export class TasksComponent implements OnInit {
 
     // показывает задачи с применением всех текущий условий (категория, поиск, фильтры и пр.)
     private fillTable() {
+
+        if (!this.dataSource) {
+            return;
+        }
+
         this.dataSource.data = this.tasks; // обновить источник данных (т.к. данные массива tasks обновились)
         this.addTableObjects();
 
