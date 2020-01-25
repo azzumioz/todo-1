@@ -41,4 +41,8 @@ export class AppComponent implements OnInit {
 
     }
 
+    private onUpdateTask (task: Task) {
+        console.log(task);
+    }
+
 }
