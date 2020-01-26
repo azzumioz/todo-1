@@ -5,6 +5,7 @@ import {TaskDAOArray} from "../data/dao/impl/TaskDAOArray";
 import {CategoryDAOArray} from "../data/dao/impl/CategoryDAOArray";
 import {Category} from "../model/Category";
 import {Priority} from "../model/Priority";
+import {PriorityDAOArray} from "../data/dao/impl/PriorityDAOArray";
 
 // класс реализовывает методы, которые нужны frontend'у, т.е. для удобной работы представлений
 // напоминает паттер Фасад (Facade) - выдает только то, что нужно для функционала
@@ -20,6 +21,7 @@ export class DataHandlerService {
     // (можно подставлять любые релизации, в том числе с БД. Главное - соблюдать интерфейсы)
     private taskDAOArray = new TaskDAOArray();
     private categoryDAOArray = new CategoryDAOArray();
+    private priorityDAOArray = new PriorityDAOArray();
 
     constructor() {
     }
