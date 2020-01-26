@@ -32,6 +32,10 @@ export class DataHandlerService {
         return this.categoryDAOArray.getAll();
     }
 
+    updateTask(task: Task): Observable<Task> {
+        return this.taskDAOArray.update(task);
+    }
+
     // поиск задач по параметрам
     searchTasks(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
         return this.taskDAOArray.search(category, searchText, status, priority);
