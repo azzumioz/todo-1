@@ -40,6 +40,19 @@
 
     </mat-form-field>
 
+    <!--    выпадающий список приоритетов-->
+    <mat-form-field>
+        <mat-label>Укажите приоритет</mat-label>
+
+        <mat-select [(ngModel)]="tmpPriority">
+            <mat-option [value]="null">Без приоритета</mat-option>
+            <mat-option *ngFor="let pri of priorities" [value]="pri">
+                {{pri.title}}
+            </mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
 
 </mat-dialog-content>
 
