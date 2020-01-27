@@ -15,13 +15,15 @@ import {
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EditTaskDialogComponent } from './dialog/edit-task-dialog/edit-task-dialog.component';
 import {FormsModule} from "@angular/forms";
+import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CategoriesComponent,
         TasksComponent,
-        EditTaskDialogComponent
+        EditTaskDialogComponent,
+        ConfirmDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -40,7 +42,8 @@ import {FormsModule} from "@angular/forms";
     ],
     providers: [],
     entryComponents: [
-        EditTaskDialogComponent
+        EditTaskDialogComponent,
+        ConfirmDialogComponent
     ],
     bootstrap: [AppComponent]
 })
