@@ -28,3 +28,8 @@
 .red {
     color: red;
 }
+
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+}

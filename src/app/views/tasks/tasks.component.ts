@@ -4,6 +4,7 @@ import {Task} from "../../model/Task";
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {EditTaskDialogComponent} from "../../dialog/edit-task-dialog/edit-task-dialog.component";
 import {ConfirmDialogComponent} from "../../dialog/confirm-dialog/confirm-dialog.component";
+import {Category} from "../../model/Category";
 
 @Component({
     selector: 'app-tasks',
@@ -33,6 +34,9 @@ export class TasksComponent implements OnInit {
 
     @Output()
     updateTask = new EventEmitter<Task>();
+
+    @Output()
+    selectCategory = new EventEmitter<Category>();
 
     constructor(private dataHandler: DataHandlerService, private dialog: MatDialog) {
     }
@@ -158,6 +162,10 @@ export class TasksComponent implements OnInit {
     private onToggleStatus(task: Task) {
         task.completed = !task.completed;
         this.updateTask.emit(task);
+    }
+
+    onSelectCategory(category: Category): void {
+        this.selectCategory.emit(category);
     }
 
 }
