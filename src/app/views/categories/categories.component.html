@@ -11,7 +11,25 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li *ngFor="let category of categories" (click)="showTasksByCategory(category)" class="nav-item pointer" [class.active] = "category === selectedCategory">
+
+            <!-- виртуальная категория 'Все'-->
+            <li class="nav-item category" (click)="showTasksByCategory(null)"
+                [class.active]="selectedCategory === null">
+
+                <a class="nav-link pointer">
+
+                    <!--          название категории-->
+                    <span class="all-category-title">Все</span>
+
+
+                </a>
+            </li>
+
+            <!-- разделитель-->
+            <div class="line"></div>
+
+            <li *ngFor="let category of categories" (click)="showTasksByCategory(category)" class="nav-item pointer"
+                [class.active]="category === selectedCategory">
                 <a class="nav-link">
                     <p>{{category.title}}</p>
                 </a>

@@ -33,3 +33,8 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.line {
+    border-bottom: 1px solid #dadada;
+    padding-top: 20px;
+}
