@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {CategoriesComponent} from './views/categories/categories.component';
 import {TasksComponent} from './views/tasks/tasks.component';
 import {
-    MatButtonModule, MatDatepickerModule,
+    MatButtonModule, MatCheckboxModule, MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatOptionModule,
     MatPaginatorModule, MatSelectModule,
@@ -46,7 +46,8 @@ registerLocaleData(localeRu);
         MatOptionModule,
         MatSelectModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatCheckboxModule
     ],
     providers: [],
     entryComponents: [
