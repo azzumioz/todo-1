@@ -1,6 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DataHandlerService} from "../../service/data-handler.service";
 import {Category} from "../../model/Category";
+import {MatDialog} from "@angular/material";
+import {EditTaskDialogComponent} from "../../dialog/edit-task-dialog/edit-task-dialog.component";
+import {EditCategoryDialogComponent} from "../../dialog/edit-category-dialog/edit-category-dialog.component";
 
 @Component({
     selector: 'app-categories',
@@ -15,13 +18,19 @@ export class CategoriesComponent implements OnInit {
     @Output()
     selectCategory = new EventEmitter<Category>();
 
+    @Output()
+    deleteCategory = new EventEmitter<Category>();
+
+    @Output()
+    updateCategory = new EventEmitter<Category>();
+
     @Input()
     selectedCategory: Category;
 
     // для отображения иконки редактирования при наведении на категорию
     private indexMouseMove: number;
 
-    constructor(private dataHandler: DataHandlerService) {
+    constructor(private dataHandler: DataHandlerService, private dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -48,6 +57,28 @@ export class CategoriesComponent implements OnInit {
 
     // диалоговое окно для редактирования категории
     private openEditDialog(category: Category) {
-        console.log(category.title);
+
+        // открытие диалогового окна
+        const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+            data: [category.title , 'Редактирование категории'],
+            width: '400px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === 'delete') {
+                this.deleteCategory.emit(category);
+                return;
+            }
+
+            if (typeof (result) === 'string') { // нажали сохранить
+                category.title = result as string;
+
+                this.updateCategory.emit(category); // вызываем внешний обработчик
+                return;
+            }
+
+        });
+
+
     }
 }

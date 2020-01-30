@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Task} from "./model/Task";
 import {DataHandlerService} from "./service/data-handler.service";
 import {Category} from "./model/Category";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'app-root',
@@ -72,6 +73,21 @@ export class AppComponent implements OnInit {
         });
 
 
+    }
+
+    // удаление категории
+    private onDeleteCategory(category: Category) {
+        this.dataHandler.deleteCategory(category.id).subscribe(cat => {
+            this.selectedCategory = null; // открываем категорию "Все"
+            this.onSelectCategory(this.selectedCategory);
+        });
+    }
+
+    // обновлении категории
+    private onUpdateCategory(category: Category) {
+        this.dataHandler.updateCategory(category).subscribe(() => {
+            this.onSelectCategory(this.selectedCategory);
+        });
     }
 
 }
