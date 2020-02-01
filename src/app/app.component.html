@@ -87,6 +87,9 @@
                                    (deleteTask)="onDeleteTask($event)"
                                    (selectCategory)="onSelectCategory($event)"
 
+                                   (filterByStatus)="onFilterTasksByStatus($event)"
+                                   (filterByTitle)="onSearchTasks($event)"
+
                                    [tasks]="tasks"></app-tasks>
                     </div>
                 </div>

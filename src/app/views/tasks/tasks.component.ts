@@ -19,6 +19,10 @@ export class TasksComponent implements OnInit {
 
     private tasks: Task[];
 
+    // поиск
+    private searchTaskText: string; // текущее значение для поиска задач
+    private selectedStatusFilter: boolean = null;   // по-умолчанию будут показываться задачи по всем статусам (решенные и нерешенные)
+
     // ссылки на компоненты таблицы
     @ViewChild(MatPaginator, {static: false}) private paginator: MatPaginator;
     @ViewChild(MatSort, {static: false}) private sort: MatSort;
@@ -37,6 +41,12 @@ export class TasksComponent implements OnInit {
 
     @Output()
     selectCategory = new EventEmitter<Category>();
+
+    @Output()
+    filterByTitle = new EventEmitter<string>();
+
+    @Output()
+    filterByStatus = new EventEmitter<boolean>();
 
     constructor(private dataHandler: DataHandlerService, private dialog: MatDialog) {
     }
@@ -167,5 +177,21 @@ export class TasksComponent implements OnInit {
     onSelectCategory(category: Category): void {
         this.selectCategory.emit(category);
     }
+
+    // фильтрация по названию
+    private onFilterByTitle() {
+        this.filterByTitle.emit(this.searchTaskText);
+    }
+
+    // фильтрация по статусу
+    private onFilterByStatus(value: boolean) {
+
+        // на всякий случай проверяем изменилось ли значение (хотя сам UI компонент должен это делать)
+        if (value !== this.selectedStatusFilter) {
+            this.selectedStatusFilter = value;
+            this.filterByStatus.emit(this.selectedStatusFilter);
+        }
+    }
+
 
 }

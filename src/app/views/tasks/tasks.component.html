@@ -1,4 +1,90 @@
-<div class="card">
+<div class="row">
+
+
+    <div class="col-md-3 col-sm-12">
+        <!--    поиск задач-->
+
+        <mat-form-field>
+            <input
+                #filterInput
+                (keydown.escape)="searchTaskText = ''; onFilterByTitle()"
+                (keyup)="onFilterByTitle()"
+                [(ngModel)]="searchTaskText"
+                matInput
+                placeholder="Поиск в текущей категории"
+
+            >
+            <button
+                    (click)="searchTaskText = ''; onFilterByTitle()"
+                    *ngIf="filterInput.value.trim().length > 0"
+                    aria-label="Clear" class="clear-icon size25 gray" mat-button
+                    mat-icon-button
+                    matSuffix
+            >
+                <mat-icon>clear</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+
+        <!--    фильтр по статусу -->
+
+        <mat-form-field>
+            <mat-select #statusFilter (valueChange)="onFilterByStatus(this.$event)"
+                        [value]="selectedStatusFilter" placeholder="Фильтр по статусу">
+                <mat-option [value]="null">Все статусы</mat-option>
+                <mat-option [value]="true">Завершенные задачи</mat-option>
+                <mat-option [value]="false">Незавершенные задачи</mat-option>
+            </mat-select>
+            <button
+                    (click)="$event.stopPropagation(); onFilterByStatus(null)"
+                    *ngIf="selectedStatusFilter != null"
+                    aria-label="Clear" class="clear-icon size25 gray" mat-button
+                    mat-icon-button
+                    matSuffix
+            >
+                <mat-icon>clear</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </div>
+
+
+    <div class="col-md-3 col-sm-12">
+
+
+
+    </div>
+
+
+    <div class="col-md-3 col-sm-12 text-right">
+        <div class="row">
+            <div class="text-left col-6">
+
+                <button
+                        (click)="$event.stopPropagation(); onFilterByStatus(null);  searchTaskText = ''; onFilterByTitle()"
+                        *ngIf="selectedStatusFilter != null ||  (searchTaskText != null && searchTaskText.trim() != '') "
+                        aria-label="Clear"
+                        mat-button
+                        matSuffix
+                >
+                    Сбросить фильтры
+                </button>
+
+            </div>
+
+            <div class="text-right col-6">
+                <button color="primary" mat-raised-button>Добавить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 task-list">
+
+
+
+    <div class="card">
     <div class="card-header card-header-warning">
         <h4 class="card-title">Список задач</h4>
     </div>
