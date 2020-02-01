@@ -103,4 +103,12 @@ export class AppComponent implements OnInit {
         });
     }
 
+    // добавление задачи
+    private onAddTask(task: Task) {
+        this.dataHandler.addTask(task).subscribe(result => {
+            this.updateTasks();
+        });
+
+    }
+
 }

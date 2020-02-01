@@ -41,6 +41,9 @@ export class TasksComponent implements OnInit {
         this.priorities = priorities;
     }
 
+    @Input()
+    selectedCategory: Category;
+
     @Output()
     deleteTask = new EventEmitter<Task>();
 
@@ -58,6 +61,10 @@ export class TasksComponent implements OnInit {
 
     @Output()
     filterByPriority = new EventEmitter<Priority>();
+
+    @Output()
+    addTask = new EventEmitter<Task>();
+
 
     constructor(private dataHandler: DataHandlerService, private dialog: MatDialog) {
     }
@@ -213,6 +220,23 @@ export class TasksComponent implements OnInit {
             this.filterByPriority.emit(this.selectedPriorityFilter);
         }
     }
+
+    // диалоговое окно для добавления задачи
+    private openAddTaskDialog() {
+
+        // то же самое, что и при редактировании, но только передаем пустой объект Task
+        const task = new Task(null, '', false, null, this.selectedCategory);
+
+        const dialogRef = this.dialog.open(EditTaskDialogComponent, {data: [task, 'Добавление задачи']});
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) { // если нажали ОК и есть результат
+                this.addTask.emit(task);
+            }
+        });
+
+    }
+
 
 
 }
