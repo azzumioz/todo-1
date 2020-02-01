@@ -3,6 +3,7 @@ import {Task} from "./model/Task";
 import {DataHandlerService} from "./service/data-handler.service";
 import {Category} from "./model/Category";
 import {Observable} from "rxjs";
+import {Priority} from "./model/Priority";
 
 @Component({
     selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
     title = 'Todo';
     tasks: Task[];
     categories: Category[];
+    priorities: Priority[];
 
     private selectedCategory: Category = null;
 
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
     private searchTaskText = ''; // текущее значение для поиска задач
 
     // фильтрация
+    private priorityFilter: Priority;
     private statusFilter: boolean;
 
     constructor(
@@ -28,14 +31,16 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.dataHandler.getAllTasks().subscribe(tasks => this.tasks = tasks);
+        this.dataHandler.getAllPriorities().subscribe(categories => this.priorities = categories);
         this.dataHandler.getAllCategories().subscribe(categories => this.categories = categories);
+        this.onSelectCategory(null);
     }
 
     // изменение категории
     private onSelectCategory(category: Category) {
         this.selectedCategory = category;
         this.updateTasks();
+
     }
 
     // удаление категории
@@ -80,12 +85,19 @@ export class AppComponent implements OnInit {
         this.updateTasks();
     }
 
+    // фильтрация задач по приоритету
+    private onFilterTasksByPriority(priority: Priority) {
+        this.priorityFilter = priority;
+        this.updateTasks();
+    }
+
+
     private updateTasks() {
         this.dataHandler.searchTasks(
             this.selectedCategory,
             this.searchTaskText,
             this.statusFilter,
-            null
+            this.priorityFilter
         ).subscribe((tasks: Task[]) => {
             this.tasks = tasks;
         });
