@@ -1,88 +1,86 @@
-<div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-    <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+<div class="sidebar" data-color="purple" data-background-color="white">
 
-      Tip 2: you can also add an image using data-image tag
-  -->
-    <div class="logo">
-        <span class="nav-title">Категории</span>
+    <div id="categories">
 
-        <!--    иконка добавления новой категории -->
-        <span class="add-icon-area">
+        <div class="logo">
+            <span class="nav-title">Категории</span>
+
+            <!--    иконка добавления новой категории -->
+            <span class="add-icon-area">
 
           <button mat-icon-button class="add-icon" (click)="openAddDialog()">
       <mat-icon>add</mat-icon>
         </button>
     </span>
-    </div>
-    <div class="sidebar-wrapper">
-        <ul class="nav">
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
 
-            <!--      поиск категорий -->
-            <div class="search-category-area">
+                <!--      поиск категорий -->
+                <div class="search-category-area">
 
-                <mat-form-field class="example-full-width">
-                    <input
+                    <mat-form-field class="example-full-width">
+                        <input
 
-                        #inputSearchCategory
+                            #inputSearchCategory
 
-                        (keydown.escape)="searchCategoryTitle = ''; search()"
-                        (keyup)="search()"
-                        [(ngModel)]="searchCategoryTitle"
+                            (keydown.escape)="searchCategoryTitle = ''; search()"
+                            (keyup)="search()"
+                            [(ngModel)]="searchCategoryTitle"
 
-                        matInput
-                        maxlength="256"
-                        placeholder="Поиск категорий"
+                            matInput
+                            maxlength="256"
+                            placeholder="Поиск категорий"
 
-                    />
+                        />
 
-                    <button
-                            (click)="searchCategoryTitle = ''; search()"
-                            *ngIf="inputSearchCategory.value.trim().length > 0" aria-label="Clear"
-                            class="search-category-button size25 gray"
-                            mat-button
+                        <button
+                                (click)="searchCategoryTitle = ''; search()"
+                                *ngIf="inputSearchCategory.value.trim().length > 0" aria-label="Clear"
+                                class="search-category-button size25 gray"
+                                mat-button
 
-                            mat-icon-button
+                                mat-icon-button
 
-                            matSuffix
-                    >
-                        <mat-icon>clear</mat-icon>
-                    </button>
+                                matSuffix
+                        >
+                            <mat-icon>clear</mat-icon>
+                        </button>
 
-                </mat-form-field>
+                    </mat-form-field>
 
-            </div>
+                </div>
 
-            <!-- виртуальная категория 'Все'-->
-            <li class="nav-item category" (click)="showTasksByCategory(null)"
-                [class.active]="selectedCategory === null">
+                <!-- виртуальная категория 'Все'-->
+                <li class="nav-item category" (click)="showTasksByCategory(null)"
+                    [class.active]="selectedCategory === null">
 
-                <a class="nav-link pointer">
+                    <a class="nav-link pointer">
 
-                    <!--          название категории-->
-                    <span class="all-category-title">Все</span>
+                        <!--          название категории-->
+                        <span class="all-category-title">Все</span>
 
 
-                </a>
-            </li>
+                    </a>
+                </li>
 
-            <!-- разделитель-->
-            <div class="line"></div>
+                <!-- разделитель-->
+                <div class="line"></div>
 
-            <div *ngIf="categories.length == 0"><p class="not-found">Ничего не найдено</p></div>
+                <div *ngIf="categories.length == 0"><p class="not-found">Ничего не найдено</p></div>
 
-            <li *ngFor="let category of categories; let index = index" (click)="showTasksByCategory(category)"
-                class="nav-item pointer"
-                [class.active]="category === selectedCategory"
-                (mouseleave)="showEditIcon(null)"
-                (mouseenter)="showEditIcon(index)">
+                <li *ngFor="let category of categories; let index = index" (click)="showTasksByCategory(category)"
+                    class="nav-item pointer"
+                    [class.active]="category === selectedCategory"
+                    (mouseleave)="showEditIcon(null)"
+                    (mouseenter)="showEditIcon(index)">
 
-                <a class="nav-link">
-                    <!--          название категории-->
-                    <span class="category-title">{{category.title}}</span>
+                    <a class="nav-link">
+                        <!--          название категории-->
+                        <span class="category-title">{{category.title}}</span>
 
-                    <!--         кнопка редактирования категории-->
-                    <span class="edit-category-icon-area">
+                        <!--         кнопка редактирования категории-->
+                        <span class="edit-category-icon-area">
 
             <mat-icon
                     *ngIf="indexMouseMove === index"
@@ -92,9 +90,11 @@
 
           </span>
 
-                </a>
+                    </a>
 
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-background"></div>
     </div>
 </div>

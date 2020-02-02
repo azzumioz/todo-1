@@ -1,0 +1,28 @@
+<footer class="footer">
+    <div class="container-fluid">
+        <nav class="float-left">
+            <ul>
+                <li>
+                    <a [href]="site">
+                        Наш сайт
+                    </a>
+                </li>
+                <li>
+                    <a (click)="openAboutDialog()" class="link">
+                        О приложении
+                    </a>
+                </li>
+                <li>
+                    <a [href]="blog">
+                        Блог
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="copyright float-right">* Тестовые данные обнуляются при обновлении страницы&nbsp;&nbsp;
+            © {{year | date: 'yyyy'}} <i class="material-icons">favorite</i>
+            <a [href]="site" target="_blank">{{siteName}}</a>
+        </div>
+    </div>
+</footer>
