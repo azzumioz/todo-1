@@ -28,11 +28,17 @@ export class CategoriesComponent implements OnInit {
     @Output()
     addCategory = new EventEmitter<string>();
 
+    // поиск категории
+    @Output()
+    searchCategory = new EventEmitter<string>(); // передаем строку для поиска
+
     @Input()
     selectedCategory: Category;
 
     // для отображения иконки редактирования при наведении на категорию
     private indexMouseMove: number;
+    private searchCategoryTitle: string; // текущее значение для поиска категорий
+
 
     constructor(private dataHandler: DataHandlerService, private dialog: MatDialog) {
     }
@@ -97,4 +103,13 @@ export class CategoriesComponent implements OnInit {
             }
         });
     }
+
+    // поиск категории
+    private search() {
+        if (this.searchCategoryTitle == null ) {
+            return;
+        }
+        this.searchCategory.emit(this.searchCategoryTitle);
+    }
+
 }

@@ -49,3 +49,15 @@ span.add-icon-area {
     text-align: center;
     vertical-align: middle
 }
+
+.search-category-area {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #f2f2f2;
+    border-radius: 6px
+}
+
+.search-category-button {
+    margin-left: 10px;
+    font-size: 25px
+}

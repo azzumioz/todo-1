@@ -44,9 +44,14 @@ export class CategoryDAOArray implements CategoryDAO {
         return of(TestData.categories);
     }
 
-    search(title: string): Observable<Category>[] {
-        return undefined;
+// поиск категорий по названию
+    search(title: string): Observable<Category[]> {
+
+        return of(TestData.categories.filter(
+            cat => cat.title.toUpperCase().includes(title.toUpperCase()))
+            .sort((c1, c2) => c1.title.localeCompare(c2.title)));
     }
+
 
     update(category: Category): Observable<Category> {
         const tmpCategory = TestData.categories.find(t => t.id === category.id); // обновляем по id
