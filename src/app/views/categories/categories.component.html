@@ -69,6 +69,8 @@
             <!-- разделитель-->
             <div class="line"></div>
 
+            <div *ngIf="categories.length == 0"><p class="not-found">Ничего не найдено</p></div>
+
             <li *ngFor="let category of categories; let index = index" (click)="showTasksByCategory(category)"
                 class="nav-item pointer"
                 [class.active]="category === selectedCategory"

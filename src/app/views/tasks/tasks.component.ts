@@ -74,7 +74,7 @@ export class TasksComponent implements OnInit {
         //this.dataHandler.getAllTasks().subscribe(tasks => this.tasks = tasks);
         // датасорс обязательно нужно создавать для таблицы, в него присваивается любой источник (БД, массивы, JSON и пр.)
         this.dataSource = new MatTableDataSource();
-        this.fillTable();
+        this.onSelectCategory(null);
     }
 
     // в этом методе уже все проинциализировано, поэтому можно присваивать объекты (иначе может быть ошибка undefined)
