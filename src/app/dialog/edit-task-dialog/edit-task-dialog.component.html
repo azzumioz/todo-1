@@ -101,9 +101,9 @@
     </div>
 
     <div class="col-md-7 col-12 text-right">
-        <button mat-button (click)="complete()" *ngIf="!task.completed">Завершить задачу</button>
-        <button mat-button (click)="activate()" *ngIf="task.completed">Активировать</button>
-        <button mat-button class="red" (click)="delete()">Удалить задачу</button>
+        <button mat-button (click)="complete()" *ngIf="!task.completed && canActivateDesactivate()">Завершить задачу</button>
+        <button mat-button (click)="activate()" *ngIf="task.completed && canActivateDesactivate()">Активировать</button>
+        <button mat-button class="red" (click)="delete()" *ngIf="canDelete()">Удалить задачу</button>
     </div>
 
 </mat-dialog-actions>

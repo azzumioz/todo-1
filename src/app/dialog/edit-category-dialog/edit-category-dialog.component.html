@@ -54,6 +54,7 @@
 
 
         <button
+                *ngIf="canDelete()"
                 mat-button
                 (click)="delete()" class="red">
 
