@@ -16,7 +16,10 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
 
             <app-header
-                    [categoryName]="selectedCategory ? selectedCategory.title: 'Все'">
+                    [categoryName]="selectedCategory ? selectedCategory.title: 'Все'"
+                    (toggleStat)="toggleStat($event)"
+                    [showStat]="showStat"
+                >
 
             </app-header>
 
@@ -29,6 +32,7 @@
                     [totalTasksInCategory]="totalTasksCountInCategory"
                     [completeTasksInCategory]="completedCountInCategory"
                     [uncompleteTasksInCategory]="uncompletedCountInCategory"
+                    [showStat]="showStat"
                 ></app-stat>
 
                 <div class="row">
