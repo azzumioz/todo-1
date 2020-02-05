@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Task} from "../model/Task";
-import {Observable} from "rxjs";
-import {TaskDAOArray} from "../data/dao/impl/TaskDAOArray";
-import {CategoryDAOArray} from "../data/dao/impl/CategoryDAOArray";
-import {Category} from "../model/Category";
-import {Priority} from "../model/Priority";
-import {PriorityDAOArray} from "../data/dao/impl/PriorityDAOArray";
+import {Category} from '../model/Category';
+import {Priority} from '../model/Priority';
+import {Task} from '../model/Task';
+import {TaskDAOArray} from '../data/dao/impl/TaskDAOArray';
+import {CategoryDAOArray} from '../data/dao/impl/CategoryDAOArray';
+import {PriorityDAOArray} from '../data/dao/impl/PriorityDAOArray';
+import {Observable} from 'rxjs';
+
 
 // класс реализовывает методы, которые нужны frontend'у, т.е. для удобной работы представлений
 // напоминает паттер Фасад (Facade) - выдает только то, что нужно для функционала
@@ -19,74 +20,101 @@ export class DataHandlerService {
 
     // релизации работы с данными с помощью массива
     // (можно подставлять любые релизации, в том числе с БД. Главное - соблюдать интерфейсы)
-    private taskDAOArray = new TaskDAOArray();
-    private categoryDAOArray = new CategoryDAOArray();
-    private priorityDAOArray = new PriorityDAOArray();
+    private taskDaoArray = new TaskDAOArray();
+    private categoryDaoArray = new CategoryDAOArray();
+    private priorityDaoArray = new PriorityDAOArray();
+
+
 
     constructor() {
     }
 
+
+    // задачи
+
     getAllTasks(): Observable<Task[]> {
-        return this.taskDAOArray.getAll();
-    }
-
-    getAllCategories(): Observable<Category[]> {
-        return this.categoryDAOArray.getAll();
-    }
-
-    getAllPriorities(): Observable<Priority[]> {
-        return this.priorityDAOArray.getAll();
-    }
-
-    updateTask(task: Task): Observable<Task> {
-        return this.taskDAOArray.update(task);
-    }
-
-    // поиск задач по параметрам
-    searchTasks(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
-        return this.taskDAOArray.search(category, searchText, status, priority);
-    }
-
-    deleteTask(id: number): Observable<Task> {
-        return this.taskDAOArray.delete(id);
-    }
-
-    updateCategory(category: Category): Observable<Category> {
-        return this.categoryDAOArray.update(category);
-    }
-
-    deleteCategory(id: number): Observable<Category> {
-        return this.categoryDAOArray.delete(id);
+        return this.taskDaoArray.getAll();
     }
 
     addTask(task: Task): Observable<Task> {
-        return this.taskDAOArray.add(task);
+        return this.taskDaoArray.add(task);
     }
 
-    addCategory(title: string): Observable<Category> {
-        return this.categoryDAOArray.add(new Category(null, title));
+    deleteTask(id: number): Observable<Task> {
+        return this.taskDaoArray.delete(id);
     }
 
-    searchCategories(title: string): Observable<Category[]> {
-        return this.categoryDAOArray.search(title);
+    updateTask(task: Task): Observable<Task> {
+        return this.taskDaoArray.update(task);
     }
+
+    // поиск задач по любым параметрам
+    searchTasks(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
+        return this.taskDaoArray.search(category, searchText, status, priority);
+    }
+
 
     // статистика
 
     getCompletedCountInCategory(category: Category): Observable<number> {
-        return this.taskDAOArray.getCompletedCountInCategory(category);
+        return this.taskDaoArray.getCompletedCountInCategory(category);
     }
 
     getUncompletedTotalCount(): Observable<number> {
-        return this.taskDAOArray.getUncompletedCountInCategory(null);
+        return this.taskDaoArray.getUncompletedCountInCategory(null);
     }
 
     getUncompletedCountInCategory(category: Category): Observable<number> {
-        return this.taskDAOArray.getUncompletedCountInCategory(category);
+        return this.taskDaoArray.getUncompletedCountInCategory(category);
     }
 
     getTotalCountInCategory(category: Category): Observable<number> {
-        return this.taskDAOArray.getTotalCountInCategory(category);
+        return this.taskDaoArray.getTotalCountInCategory(category);
+    }
+
+    getTotalCount(): Observable<number> {
+        return this.taskDaoArray.getTotalCount();
+    }
+
+
+    // категории
+
+    addCategory(title: string): Observable<Category> {
+        return this.categoryDaoArray.add(new Category(null, title));
+    }
+
+    getAllCategories(): Observable<Category[]> {
+        return this.categoryDaoArray.getAll();
+    }
+
+    searchCategories(title: string): Observable<Category[]> {
+        return this.categoryDaoArray.search(title);
+    }
+
+    updateCategory(category: Category): Observable<Category> {
+        return this.categoryDaoArray.update(category);
+    }
+
+    deleteCategory(id: number): Observable<Category> {
+        return this.categoryDaoArray.delete(id);
+    }
+
+
+    // приоритеты
+
+    getAllPriorities(): Observable<Priority[]> {
+        return this.priorityDaoArray.getAll();
+    }
+
+    addPriority(priority: Priority): Observable<Priority> {
+        return this.priorityDaoArray.add(priority);
+    }
+
+    deletePriority(id: number): Observable<Priority> {
+        return this.priorityDaoArray.delete(id);
+    }
+
+    updatePriority(priority: Priority): Observable<Priority> {
+        return this.priorityDaoArray.update(priority);
     }
 }
-
