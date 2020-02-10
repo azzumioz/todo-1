@@ -16,6 +16,12 @@ export class CategoriesComponent implements OnInit {
     @Input()
     private categories: Category[];
 
+    // категории с кол-вом активных задач для каждой из них
+    @Input('categoryMap')
+    set setCategoryMap(categoryMap: Map<Category, number>) {
+        this.selectedCategoryMap = categoryMap;
+    }
+
     @Output()
     selectCategory = new EventEmitter<Category>();
 
@@ -38,6 +44,9 @@ export class CategoriesComponent implements OnInit {
     // для отображения иконки редактирования при наведении на категорию
     private indexMouseMove: number;
     private searchCategoryTitle: string; // текущее значение для поиска категорий
+
+    private selectedCategoryMap: Map<Category, number>; // список всех категорий и кол-во активных задач
+
 
 
     constructor(private dataHandler: DataHandlerService, private dialog: MatDialog) {

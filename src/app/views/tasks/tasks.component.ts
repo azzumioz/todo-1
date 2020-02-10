@@ -77,11 +77,6 @@ export class TasksComponent implements OnInit {
         this.onSelectCategory(null);
     }
 
-    // в этом методе уже все проинциализировано, поэтому можно присваивать объекты (иначе может быть ошибка undefined)
-    ngAfterViewInit(): void {
-        this.addTableObjects();
-    }
-
     // в зависимости от статуса задачи - вернуть цвет названия
     private getPriorityColor(task: Task): string {
         if (task.completed) {

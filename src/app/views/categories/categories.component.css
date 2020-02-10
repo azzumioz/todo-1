@@ -69,3 +69,13 @@ span.add-icon-area {
 .sidebar-wrapper .mat-form-field {
     padding-bottom: 0px;
 }
+
+.uncompleted-count {
+    background-color: #eaeaea;
+    border-radius: 3px;
+    padding: 5px;
+    color: black;
+    width: 15%;
+    display: inline-block;
+    text-align: center;
+}
