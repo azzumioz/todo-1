@@ -69,26 +69,34 @@
 
                 <div *ngIf="categories.length == 0"><p class="not-found">Ничего не найдено</p></div>
 
-                <li *ngFor="let category of categories; let index = index" (click)="showTasksByCategory(category)"
-                    class="nav-item pointer"
-                    [class.active]="category === selectedCategory"
-                    (mouseleave)="showEditIcon(null)"
-                    (mouseenter)="showEditIcon(index)">
+                <li
+                        (click)="showTasksByCategory(mapValue.key)" (mouseenter)="showEditIcon(index)"
+                        (mouseleave)="showEditIcon(null)"
+
+                        *ngFor="let mapValue of selectedCategoryMap | keyvalue; let index = index"
+                        [class.active]="mapValue.key === selectedCategory"
+
+                        class="nav-item pointer"
+                        [class.active]="mapValue.key === selectedCategory"
+                        (mouseleave)="showEditIcon(null)"
+                        (mouseenter)="showEditIcon(index)">
 
                     <a class="nav-link">
                         <!--          название категории-->
-                        <span class="category-title">{{category.title}}</span>
+                        <span class="category-title">{{mapValue.key.title}}</span>
 
                         <!--         кнопка редактирования категории-->
                         <span class="edit-category-icon-area">
 
             <mat-icon
                     *ngIf="indexMouseMove === index"
-                    (click)="$event.stopPropagation(); openEditDialog(category)"
+                    (click)="$event.stopPropagation(); openEditDialog(mapValue.key)"
                     class="edit-category-icon">edit
             </mat-icon>
 
           </span>
+                        <!--сколько невыполненных задач-->
+                        <span class="uncompleted-count"> {{mapValue.value}}</span>
 
                     </a>
 
