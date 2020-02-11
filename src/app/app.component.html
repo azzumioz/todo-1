@@ -1,17 +1,24 @@
 <div class="wrapper ">
 
-    <app-categories
-            (selectCategory)="onSelectCategory($event)"
+    <div class="sidebar"
+         data-color="purple"
+         data-step="1"
+         data-intro="Фильтрация задач, добавление/удаление/редактирование категорий"
+         data-position='right'
+    >
+        <app-categories
+                (selectCategory)="onSelectCategory($event)"
 
-            (deleteCategory)="onDeleteCategory($event)"
-            (updateCategory)="onUpdateCategory($event)"
-            (addCategory)="onAddCategory($event)"
-            (searchCategory)="onSearchCategory($event)"
-            [categoryMap]="categoryMap"
-            [uncompletedTotal] = "uncompletedTotalTasksCount"
+                (deleteCategory)="onDeleteCategory($event)"
+                (updateCategory)="onUpdateCategory($event)"
+                (addCategory)="onAddCategory($event)"
+                (searchCategory)="onSearchCategory($event)"
+                [categoryMap]="categoryMap"
+                [uncompletedTotal]="uncompletedTotalTasksCount"
 
-            [selectedCategory]="selectedCategory"
-            [categories]="categories"></app-categories>
+                [selectedCategory]="selectedCategory"
+                [categories]="categories"></app-categories>
+    </div>
 
     <div class="main-panel">
 
@@ -21,7 +28,7 @@
                     [categoryName]="selectedCategory ? selectedCategory.title: 'Все'"
                     (toggleStat)="toggleStat($event)"
                     [showStat]="showStat"
-                >
+            >
 
             </app-header>
 
@@ -30,12 +37,18 @@
         <div class="content">
             <div class="container-fluid">
 
-                <app-stat
-                    [totalTasksInCategory]="totalTasksCountInCategory"
-                    [completeTasksInCategory]="completedCountInCategory"
-                    [uncompleteTasksInCategory]="uncompletedCountInCategory"
-                    [showStat]="showStat"
-                ></app-stat>
+                <div data-step="2"
+                     data-intro="Список всех задач cо статистикой"
+                     data-position='top'>
+
+                    <app-stat
+                            [totalTasksInCategory]="totalTasksCountInCategory"
+                            [completeTasksInCategory]="completedCountInCategory"
+                            [uncompleteTasksInCategory]="uncompletedCountInCategory"
+                            [showStat]="showStat"
+                    ></app-stat>
+
+                </div>
 
                 <div class="row">
                     <div class="col-12">

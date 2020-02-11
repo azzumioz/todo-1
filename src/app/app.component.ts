@@ -5,6 +5,7 @@ import {Category} from "./model/Category";
 import {zip} from "rxjs";
 import {Priority} from "./model/Priority";
 import {concatMap, map} from "rxjs/operators";
+import {IntroService} from "./service/intro.service";
 
 @Component({
     selector: 'app-root',
@@ -42,6 +43,7 @@ export class AppComponent implements OnInit {
 
     constructor(
         private dataHandler: DataHandlerService, // фасад для работы с данными
+        private introService: IntroService, // вводная справоч. информация с выделением областей
     ) {
     }
 
@@ -53,6 +55,8 @@ export class AppComponent implements OnInit {
         this.fillCategories();
 
         this.onSelectCategory(null);
+
+        this.introService.startIntroJS(true);
     }
 
     // изменение категории
