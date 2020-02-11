@@ -22,6 +22,10 @@ export class CategoriesComponent implements OnInit {
         this.selectedCategoryMap = categoryMap;
     }
 
+// кол-во невыполненных задач всего
+    @Input()
+    uncompletedTotal: number;
+
     @Output()
     selectCategory = new EventEmitter<Category>();
 
