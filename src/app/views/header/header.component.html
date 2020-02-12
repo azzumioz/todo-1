@@ -3,6 +3,10 @@
 
         <div class="col-10 text-left align-self-top">
 
+            <button (click)="onToggleMenu()" mat-icon-button type="button">
+                <mat-icon>menu</mat-icon>
+            </button>
+
             <p class="navbar-brand">{{categoryName}}</p>
 
             <p class="link navbar-brand" (click)="onToggleStat()" *ngIf="showStat">Скрыть статистику</p>
