@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material";
 import {EditTaskDialogComponent} from "../../dialog/edit-task-dialog/edit-task-dialog.component";
 import {EditCategoryDialogComponent} from "../../dialog/edit-category-dialog/edit-category-dialog.component";
 import {OperType} from "../../dialog/OperType";
+import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
     selector: 'app-categories',
@@ -51,9 +52,16 @@ export class CategoriesComponent implements OnInit {
 
     private selectedCategoryMap: Map<Category, number>; // список всех категорий и кол-во активных задач
 
+    private isMobile: boolean;
+    private isTablet: boolean;
 
-
-    constructor(private dataHandler: DataHandlerService, private dialog: MatDialog) {
+    constructor(
+        private dataHandler: DataHandlerService,
+        private dialog: MatDialog,
+        private deviceService: DeviceDetectorService // для определения типа устройства
+    ) {
+        this.isMobile = deviceService.isMobile();
+        this.isTablet = deviceService.isTablet();
     }
 
     ngOnInit() {
@@ -83,7 +91,7 @@ export class CategoriesComponent implements OnInit {
 
         // открытие диалогового окна
         const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
-            data: [category.title , 'Редактирование категории', OperType.EDIT],
+            data: [category.title, 'Редактирование категории', OperType.EDIT],
             width: '400px'
         });
 
@@ -108,7 +116,10 @@ export class CategoriesComponent implements OnInit {
     // диалоговое окно для добавления категории
     private openAddDialog() {
 
-        const dialogRef = this.dialog.open(EditCategoryDialogComponent, {data: ['', 'Добавление категории', OperType.ADD], width: '400px'});
+        const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+            data: ['', 'Добавление категории', OperType.ADD],
+            width: '400px'
+        });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -119,7 +130,7 @@ export class CategoriesComponent implements OnInit {
 
     // поиск категории
     private search() {
-        if (this.searchCategoryTitle == null ) {
+        if (this.searchCategoryTitle == null) {
             return;
         }
         this.searchCategory.emit(this.searchCategoryTitle);

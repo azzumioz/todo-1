@@ -90,7 +90,7 @@
                         <span class="edit-category-icon-area">
 
             <mat-icon
-                    *ngIf="indexMouseMove === index"
+                    *ngIf="indexMouseMove === index || isMobile || isTablet"
                     (click)="$event.stopPropagation(); openEditDialog(mapValue.key)"
                     class="edit-category-icon">edit
             </mat-icon>
