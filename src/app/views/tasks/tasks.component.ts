@@ -17,25 +17,25 @@ import {DeviceDetectorService} from "ngx-device-detector";
 export class TasksComponent implements OnInit {
 
     // поля для таблицы (те, что отображают данные из задачи - должны совпадать с названиями переменных класса)
-    private displayedColumns: string[] = ['color', 'id', 'title', 'date', 'priority', 'category', 'operations', 'select'];
-    private dataSource: MatTableDataSource<Task>; // контейнер - источник данных для таблицы
+     displayedColumns: string[] = ['color', 'id', 'title', 'date', 'priority', 'category', 'operations', 'select'];
+     dataSource: MatTableDataSource<Task>; // контейнер - источник данных для таблицы
 
-    private priorities: Priority[]; // список приоритетов (для фильтрации задач)
-    private tasks: Task[];
+     priorities: Priority[]; // список приоритетов (для фильтрации задач)
+     tasks: Task[];
 
     // поиск
-    private searchTaskText: string; // текущее значение для поиска задач
-    private selectedStatusFilter: boolean = null;   // по-умолчанию будут показываться задачи по всем статусам (решенные и нерешенные)
-    private selectedPriorityFilter: Priority = null;   // по-умолчанию будут показываться задачи по всем приоритетам
+     searchTaskText: string; // текущее значение для поиска задач
+     selectedStatusFilter: boolean = null;   // по-умолчанию будут показываться задачи по всем статусам (решенные и нерешенные)
+     selectedPriorityFilter: Priority = null;   // по-умолчанию будут показываться задачи по всем приоритетам
 
-    private isMobile: boolean;
+     isMobile: boolean;
 
     // ссылки на компоненты таблицы
     @ViewChild(MatPaginator, {static: false}) private paginator: MatPaginator;
     @ViewChild(MatSort, {static: false}) private sort: MatSort;
 
     @Input('tasks')
-    private set setTasks(tasks: Task[]) {
+     set setTasks(tasks: Task[]) {
         this.tasks = tasks;
         this.fillTable();
     }
@@ -86,7 +86,7 @@ export class TasksComponent implements OnInit {
     }
 
     // в зависимости от статуса задачи - вернуть цвет названия
-    private getPriorityColor(task: Task): string {
+     getPriorityColor(task: Task): string {
         if (task.completed) {
             return '#F8F9FA'; // TODO вынести цвета в константы (magic strings, magic numbers)
         }
@@ -99,7 +99,7 @@ export class TasksComponent implements OnInit {
     }
 
     // показывает задачи с применением всех текущий условий (категория, поиск, фильтры и пр.)
-    private fillTable(): void {
+     fillTable(): void {
 
         if (!this.dataSource) {
             return;
@@ -132,13 +132,13 @@ export class TasksComponent implements OnInit {
         };
     }
 
-    private addTableObjects(): void {
+     addTableObjects(): void {
         this.dataSource.sort = this.sort; // компонент для сортировки данных (если необходимо)
         this.dataSource.paginator = this.paginator; // обновить компонент постраничности (кол-во записей, страниц)
     }
 
     // диалоговое редактирования для добавления задачи
-    private openEditTaskDialog(task: Task): void {
+     openEditTaskDialog(task: Task): void {
 
         // открытие диалогового окна
         const dialogRef = this.dialog.open(EditTaskDialogComponent, {
@@ -174,7 +174,7 @@ export class TasksComponent implements OnInit {
     }
 
     // диалоговое окно подтверждения удаления
-    private openDeleteDialog(task: Task) {
+     openDeleteDialog(task: Task) {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             maxWidth: '500px',
             data: {
@@ -191,7 +191,7 @@ export class TasksComponent implements OnInit {
         });
     }
 
-    private onToggleStatus(task: Task) {
+     onToggleStatus(task: Task) {
         task.completed = !task.completed;
         this.updateTask.emit(task);
     }
@@ -201,12 +201,12 @@ export class TasksComponent implements OnInit {
     }
 
     // фильтрация по названию
-    private onFilterByTitle() {
+     onFilterByTitle() {
         this.filterByTitle.emit(this.searchTaskText);
     }
 
     // фильтрация по статусу
-    private onFilterByStatus(value: boolean) {
+     onFilterByStatus(value: boolean) {
 
         // на всякий случай проверяем изменилось ли значение (хотя сам UI компонент должен это делать)
         if (value !== this.selectedStatusFilter) {
@@ -216,7 +216,7 @@ export class TasksComponent implements OnInit {
     }
 
     // фильтрация по приоритету
-    private onFilterByPriority(value: Priority) {
+     onFilterByPriority(value: Priority) {
 
         // на всякий случай проверяем изменилось ли значение (хотя сам UI компонент должен это делать)
         if (value !== this.selectedPriorityFilter) {
@@ -226,7 +226,7 @@ export class TasksComponent implements OnInit {
     }
 
     // диалоговое окно для добавления задачи
-    private openAddTaskDialog() {
+     openAddTaskDialog() {
 
         // то же самое, что и при редактировании, но только передаем пустой объект Task
         const task = new Task(null, '', false, null, this.selectedCategory);
@@ -242,7 +242,7 @@ export class TasksComponent implements OnInit {
     }
 
     // в зависимости от статуса задачи - вернуть фоноввый цвет
-    private getMobilePriorityBgColor(task: Task) {
+     getMobilePriorityBgColor(task: Task) {
 
         if (task.priority != null && !task.completed) {
             return task.priority.color;

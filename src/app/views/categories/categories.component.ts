@@ -15,7 +15,7 @@ import {DeviceDetectorService} from "ngx-device-detector";
 export class CategoriesComponent implements OnInit {
 
     @Input()
-    private categories: Category[];
+     categories: Category[];
 
     // категории с кол-вом активных задач для каждой из них
     @Input('categoryMap')
@@ -47,13 +47,13 @@ export class CategoriesComponent implements OnInit {
     selectedCategory: Category;
 
     // для отображения иконки редактирования при наведении на категорию
-    private indexMouseMove: number;
-    private searchCategoryTitle: string; // текущее значение для поиска категорий
+     indexMouseMove: number;
+     searchCategoryTitle: string; // текущее значение для поиска категорий
 
-    private selectedCategoryMap: Map<Category, number>; // список всех категорий и кол-во активных задач
+     selectedCategoryMap: Map<Category, number>; // список всех категорий и кол-во активных задач
 
-    private isMobile: boolean;
-    private isTablet: boolean;
+     isMobile: boolean;
+     isTablet: boolean;
 
     constructor(
         private dataHandler: DataHandlerService,
@@ -81,13 +81,13 @@ export class CategoriesComponent implements OnInit {
     }
 
     // сохраняет индекс записи категории, над который в данный момент проходит мышка (и там отображается иконка редактирования)
-    private showEditIcon(index: number) {
+     showEditIcon(index: number) {
         this.indexMouseMove = index;
 
     }
 
     // диалоговое окно для редактирования категории
-    private openEditDialog(category: Category) {
+     openEditDialog(category: Category) {
 
         // открытие диалогового окна
         const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
@@ -114,7 +114,7 @@ export class CategoriesComponent implements OnInit {
     }
 
     // диалоговое окно для добавления категории
-    private openAddDialog() {
+     openAddDialog() {
 
         const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
             data: ['', 'Добавление категории', OperType.ADD],
@@ -129,7 +129,7 @@ export class CategoriesComponent implements OnInit {
     }
 
     // поиск категории
-    private search() {
+     search() {
         if (this.searchCategoryTitle == null) {
             return;
         }

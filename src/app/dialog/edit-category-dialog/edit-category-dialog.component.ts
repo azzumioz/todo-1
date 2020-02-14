@@ -19,9 +19,9 @@ export class EditCategoryDialogComponent implements OnInit {
   ) {
   }
 
-  private dialogTitle: string; // текст для диалогового окна
-  private categoryTitle: string; // текст для названия категории (при реактировании или добавлении)
-  private operType: OperType; // тип операции
+   dialogTitle: string; // текст для диалогового окна
+   categoryTitle: string; // текст для названия категории (при реактировании или добавлении)
+   operType: OperType; // тип операции
 
   ngOnInit() {
 
@@ -33,17 +33,17 @@ export class EditCategoryDialogComponent implements OnInit {
   }
 
   // нажали ОК
-  private onConfirm() {
+   onConfirm() {
     this.dialogRef.close(this.categoryTitle);
   }
 
   // нажали отмену (ничего не сохраняем и закрываем окно)
-  private onCancel() {
+   onCancel() {
     this.dialogRef.close(false);
   }
 
   // нажали Удалить
-  private delete() {
+   delete() {
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '500px',
@@ -63,7 +63,7 @@ export class EditCategoryDialogComponent implements OnInit {
 
   }
 
-  private canDelete(): boolean {
+   canDelete(): boolean {
     return this.operType === OperType.EDIT;
   }
 

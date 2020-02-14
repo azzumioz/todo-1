@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     categoryName: string;
 
     @Input()
-    private showStat: boolean;
+     showStat: boolean;
 
     @Output()
     toggleStat = new EventEmitter<boolean>(); // показать/скрыть статистику
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     @Output()
     toggleMenu = new EventEmitter(); // показать/скрыть меню
 
-    private isMobile: boolean;
+    isMobile: boolean;
 
     constructor(
         private dialog: MatDialog,
@@ -38,12 +38,12 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
     }
 
-    private onToggleStat() {
+     onToggleStat() {
         this.toggleStat.emit(!this.showStat); // вкл/выкл статистику
     }
 
     // окно настроек
-    private showSettings() {
+     showSettings() {
         const dialogRef = this.dialog.open(SettingsDialogComponent,
             {
                 autoFocus: false,
@@ -54,11 +54,11 @@ export class HeaderComponent implements OnInit {
 
     }
 
-    private showIntroHelp() {
+     showIntroHelp() {
         this.introService.startIntroJS(false);
     }
 
-    private onToggleMenu() {
+     onToggleMenu() {
         this.toggleMenu.emit(); // показать/скрыть меню
     }
 

@@ -9,8 +9,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 
 // диалоговое окно подтверждения действия
 export class ConfirmDialogComponent implements OnInit {
-  private dialogTitle: string;
-  private message: string;
+   dialogTitle: string;
+   message: string;
 
   constructor(
       private dialogRef: MatDialogRef<ConfirmDialogComponent>, // для работы с текущим диалог. окном
@@ -24,12 +24,12 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   // нажали ОК
-  private onConfirm(): void {
+   onConfirm(): void {
     this.dialogRef.close(true);
   }
 
   // нажали отмену
-  private onCancel(): void {
+   onCancel(): void {
     this.dialogRef.close(false);
   }
 }

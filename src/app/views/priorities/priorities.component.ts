@@ -19,7 +19,7 @@ export class PrioritiesComponent implements OnInit {
 
 
   @Input()
-  private priorities: [Priority];
+   priorities: [Priority];
 
 
   // ----------------------- исходящие действия----------------------------
@@ -65,7 +65,7 @@ export class PrioritiesComponent implements OnInit {
     });
   }
 
-  private onAddPriority(): void {
+   onAddPriority(): void {
 
 
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
@@ -83,7 +83,7 @@ export class PrioritiesComponent implements OnInit {
 
   }
 
-  private onEditPriority(priority: Priority): void {
+   onEditPriority(priority: Priority): void {
 
 
     const dialogRef = this.dialog.open(EditPriorityDialogComponent, {data: [priority.title, 'Редактирование приоритета', OperType.EDIT]});

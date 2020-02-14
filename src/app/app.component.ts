@@ -16,41 +16,41 @@ import {DeviceDetectorService} from "ngx-device-detector";
 export class AppComponent implements OnInit {
 
     // коллекция категорий с кол-вом незавершенных задач для каждой из них
-    private categoryMap = new Map<Category, number>();
+     categoryMap = new Map<Category, number>();
 
-    title = 'Todo';
-    private tasks: Task[];
-    private categories: Category[];
-    private priorities: Priority[];
+     title = 'Todo';
+     tasks: Task[];
+     categories: Category[];
+     priorities: Priority[];
 
     // статистика
-    private totalTasksCountInCategory: number;
-    private completedCountInCategory: number;
-    private uncompletedCountInCategory: number;
-    private uncompletedTotalTasksCount: number;
+     totalTasksCountInCategory: number;
+     completedCountInCategory: number;
+     uncompletedCountInCategory: number;
+     uncompletedTotalTasksCount: number;
 
     // показать/скрыть статистику
-    private showStat = true;
+     showStat = true;
 
-    private selectedCategory: Category = null;
+     selectedCategory: Category = null;
 
     // поиск
-    private searchTaskText = ''; // текущее значение для поиска задач
-    private searchCategoryText = ''; // текущее значение для поиска категорий
+     searchTaskText = ''; // текущее значение для поиска задач
+     searchCategoryText = ''; // текущее значение для поиска категорий
 
     // фильтрация
-    private priorityFilter: Priority;
-    private statusFilter: boolean;
+     priorityFilter: Priority;
+     statusFilter: boolean;
 
     // параметры бокового меню с категориями
-    private menuOpened: boolean; // открыть-закрыть
-    private menuMode: string; // тип выдвижения (поверх, с толканием и пр.)
-    private menuPosition: string; // сторона
-    private showBackdrop: boolean; // показывать фоновое затемнение или нет
+     menuOpened: boolean; // открыть-закрыть
+     menuMode: string; // тип выдвижения (поверх, с толканием и пр.)
+     menuPosition: string; // сторона
+     showBackdrop: boolean; // показывать фоновое затемнение или нет
 
     // тип устройства
-    private isMobile: boolean;
-    private isTablet: boolean;
+     isMobile: boolean;
+     isTablet: boolean;
 
 
     constructor(
@@ -86,14 +86,14 @@ export class AppComponent implements OnInit {
 
 
     // изменение категории
-    private onSelectCategory(category: Category): void {
+     onSelectCategory(category: Category): void {
         this.selectedCategory = category;
         this.updateTasksAndStat();
 
     }
 
     // удаление категории
-    private onDeleteCategory(category: Category) {
+     onDeleteCategory(category: Category) {
         this.dataHandler.deleteCategory(category.id).subscribe(cat => {
             this.selectedCategory = null; // открываем категорию "Все"
             this.categoryMap.delete(cat); // не забыть удалить категорию из карты
@@ -103,14 +103,14 @@ export class AppComponent implements OnInit {
     }
 
     // обновлении категории
-    private onUpdateCategory(category: Category): void {
+     onUpdateCategory(category: Category): void {
         this.dataHandler.updateCategory(category).subscribe(() => {
             this.onSearchCategory(this.searchCategoryText);
         });
     }
 
     // обновление задачи
-    private onUpdateTask(task: Task): void {
+     onUpdateTask(task: Task): void {
         this.dataHandler.updateTask(task).subscribe(() => {
             this.fillCategories();
             this.updateTasksAndStat();
@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
     }
 
     // удаление задачи
-    private onDeleteTask(task: Task) {
+     onDeleteTask(task: Task) {
 
         this.dataHandler.deleteTask(task.id).pipe(
             concatMap(task => {
@@ -144,25 +144,25 @@ export class AppComponent implements OnInit {
     }
 
     // поиск задач
-    private onSearchTasks(searchString: string): void {
+     onSearchTasks(searchString: string): void {
         this.searchTaskText = searchString;
         this.updateTasks();
     }
 
     // фильтрация задач по статусу (все, решенные, нерешенные)
-    private onFilterTasksByStatus(status: boolean): void {
+     onFilterTasksByStatus(status: boolean): void {
         this.statusFilter = status;
         this.updateTasks();
     }
 
     // фильтрация задач по приоритету
-    private onFilterTasksByPriority(priority: Priority): void {
+     onFilterTasksByPriority(priority: Priority): void {
         this.priorityFilter = priority;
         this.updateTasks();
     }
 
 
-    private updateTasks(): void {
+     updateTasks(): void {
         this.dataHandler.searchTasks(
             this.selectedCategory,
             this.searchTaskText,
@@ -174,7 +174,7 @@ export class AppComponent implements OnInit {
     }
 
 // добавление задачи
-    private onAddTask(task: Task) {
+     onAddTask(task: Task) {
 
         this.dataHandler.addTask(task).pipe(// сначала добавляем задачу
             concatMap(task => { // используем добавленный task (concatMap - для последовательного выполнения)
@@ -200,16 +200,16 @@ export class AppComponent implements OnInit {
 
 
     // добавление категории
-    private onAddCategory(title: string): void {
+     onAddCategory(title: string): void {
         this.dataHandler.addCategory(title).subscribe(() => this.fillCategories());
     }
 
-    private updateCategories() {
+     updateCategories() {
         this.dataHandler.getAllCategories().subscribe(categories => this.categories = categories);
     }
 
     // заполняет категории и кол-во невыполненных задач по каждой из них (нужно для отображения категорий)
-    private fillCategories() {
+     fillCategories() {
 
         if (this.categoryMap) {
             this.categoryMap.clear();
@@ -226,7 +226,7 @@ export class AppComponent implements OnInit {
     }
 
     // поиск категории
-    private onSearchCategory(title: string): void {
+     onSearchCategory(title: string): void {
         this.searchCategoryText = title;
         this.dataHandler.searchCategories(title).subscribe(categories => {
             this.categories = categories;
@@ -235,7 +235,7 @@ export class AppComponent implements OnInit {
     }
 
     // показывает задачи с применением всех текущий условий (категория, поиск, фильтры и пр.)
-    private updateTasksAndStat(): void {
+     updateTasksAndStat(): void {
 
         this.updateTasks(); // обновить список задач
 
@@ -245,7 +245,7 @@ export class AppComponent implements OnInit {
     }
 
     // обновить статистику
-    private updateStat(): void {
+     updateStat(): void {
         zip(
             this.dataHandler.getTotalCountInCategory(this.selectedCategory),
             this.dataHandler.getCompletedCountInCategory(this.selectedCategory),
@@ -261,17 +261,17 @@ export class AppComponent implements OnInit {
     }
 
     // показать-скрыть статистику
-    private toggleStat(showStat: boolean): void {
+     toggleStat(showStat: boolean): void {
         this.showStat = showStat;
     }
 
     // если закрыли меню любым способом - ставим значение false
-    private onClosedMenu() {
+     onClosedMenu() {
         this.menuOpened = false;
     }
 
 // параметры меню
-    private setMenuValues() {
+     setMenuValues() {
 
         this.menuPosition = 'left'; // меню слева
 
@@ -290,7 +290,7 @@ export class AppComponent implements OnInit {
     }
 
     // показать-скрыть меню
-    private toggleMenu() {
+     toggleMenu() {
         this.menuOpened = !this.menuOpened;
     }
 

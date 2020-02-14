@@ -12,10 +12,10 @@ import {AboutDialogComponent} from "../../dialog/about/about-dialog.component";
 // "presentational component": отображает полученные данные
 // подвал - нижняя часть страницы
 export class FooterComponent implements OnInit {
-  private year: Date;
-  private site = '';
-  private blog = '';
-  private siteName = 'Azzumioz';
+   year: Date;
+   site = '';
+   blog = '';
+   siteName = 'Azzumioz';
 
   constructor(private dialog: MatDialog) {
   }
@@ -25,7 +25,7 @@ export class FooterComponent implements OnInit {
   }
 
   // окно "О программе"
-  private openAboutDialog() {
+   openAboutDialog() {
     this.dialog.open(AboutDialogComponent,
         {
           autoFocus: false,

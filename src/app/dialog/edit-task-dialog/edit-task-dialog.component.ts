@@ -16,17 +16,17 @@ import {OperType} from "../OperType";
 // редактирование/создание задачи
 export class EditTaskDialogComponent implements OnInit {
 
-    private categories: Category[];
-    private priorities: Priority[];
-    private operType: OperType;
+     categories: Category[];
+     priorities: Priority[];
+     operType: OperType;
 
-    private dialogTitle: string; // заголовок окна
-    private task: Task; // задача для редактирования/создания
+     dialogTitle: string; // заголовок окна
+     task: Task; // задача для редактирования/создания
     // чтобы изменения не сказывались на самой задаче и можно было отменить изменения
-    private tmpTitle: string;
-    private tmpCategory: Category;
-    private tmpPriority: Priority;
-    private tmpDate: Date;
+     tmpTitle: string;
+     tmpCategory: Category;
+     tmpPriority: Priority;
+     tmpDate: Date;
 
     // сохраняем все значения в отдельные переменные
 
@@ -56,7 +56,7 @@ export class EditTaskDialogComponent implements OnInit {
     }
 
 // нажали ОК
-    private onConfirm(): void {
+     onConfirm(): void {
         // считываем все значения для сохранения в поля задачи
         this.task.title = this.tmpTitle;
         this.task.category = this.tmpCategory;
@@ -71,12 +71,12 @@ export class EditTaskDialogComponent implements OnInit {
     }
 
 // нажали отмену (ничего не сохраняем и закрываем окно)
-    private onCancel(): void {
+     onCancel(): void {
         this.dialogRef.close(null);
     }
 
     // нажали Удалить
-    private delete() {
+     delete() {
 
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             maxWidth: '500px',
@@ -95,20 +95,20 @@ export class EditTaskDialogComponent implements OnInit {
     }
 
     // нажали Выполнить (завершить) задачу
-    private complete() {
+     complete() {
         this.dialogRef.close('complete');
     }
 
     // делаем статус задачи "незавершенным" (активируем)
-    private activate() {
+     activate() {
         this.dialogRef.close('activate');
     }
 
-    private canDelete() : boolean {
+     canDelete() : boolean {
         return this.operType === OperType.EDIT;
     }
 
-    private canActivateDesactivate(): boolean {
+     canActivateDesactivate(): boolean {
     return this.operType === OperType.EDIT;
 }
 
